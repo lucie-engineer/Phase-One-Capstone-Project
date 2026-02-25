@@ -17,7 +17,7 @@ public class FileManager {
                         student.getName() + "," +
                         student.getGPA()+ "," +
                         student.getDepartment() + "," +
-                (student instanceof GraduateStudent ? "G" : "U"));
+                        (student instanceof GraduateStudent ? "G" : "U"));
                 writer.newLine();
             }
             System.out.println("Students saved successfully");

@@ -4,7 +4,7 @@ import University.Student;
 import University.UndergraduateStudent;
 import administration.UniversityManager;
 import exceptions.CourseFullException;
-import exceptions.StudentAlreadyEnrolledException; 
+import exceptions.StudentAlreadyEnrolledException;
 import filemanager.FileManager;
 
 import java.util.List;
@@ -153,9 +153,13 @@ public class Main {
                     break;
 
                 case 6:
-                    fileManager.saveStudents(manager.getStudents(), "students.csv");
-                    fileManager.saveCourses(manager.getCourses(), "courses.csv");
-                    System.out.println("Data saved");
+                    if (manager.getStudents().isEmpty() && manager.getCourses().isEmpty()) {
+                        System.out.println("Nothing to save");
+                    } else {
+                        fileManager.saveStudents(manager.getStudents(), "students.csv");
+                        fileManager.saveCourses(manager.getCourses(), "courses.csv");
+                        System.out.println("Data saved! Goodbye!");
+                    }
                     running = false;
                     break;
 
