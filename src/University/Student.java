@@ -22,6 +22,9 @@ public abstract class Student extends Person{
    public String getDepartment(){
        return department;
    }
+   public Map<Course, Double> getCourseGrades(){
+       return courseGrades;
+   }
 
    public void setStudentID(String studentID){
        this.studentID=studentID;
