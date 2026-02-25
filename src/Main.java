@@ -8,6 +8,7 @@ import exceptions.StudentAlreadyEnrolledException;
 import filemanager.FileManager;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
@@ -135,7 +136,15 @@ public class Main {
                             System.out.println("GPA: " + s.getGPA());
                             System.out.println("Department: " + s.getDepartment());
                             System.out.println("Tuition: " + s.calculateTuition());
-                            System.out.println("Courses: " + s.getCourseGrades());
+                            if (s.getCourseGrades().isEmpty()) {
+                                System.out.println("Courses: No courses enrolled yet!");
+                            } else {
+                                System.out.println("Courses enrolled:");
+                                for (Map.Entry<Course, Double> entry : s.getCourseGrades().entrySet()) {
+                                    System.out.println("  - " + entry.getKey().getCourseName() +
+                                            " | Grade: " + entry.getValue());
+                                }
+                            }
                             break;
                         }
                     }
