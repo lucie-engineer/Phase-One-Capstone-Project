@@ -4,6 +4,9 @@ public class Instructor extends Person {
     private String lectureID;
     private String department;
 
+
+
+
     public String getEmployeeID() {
         return lectureID;
     }

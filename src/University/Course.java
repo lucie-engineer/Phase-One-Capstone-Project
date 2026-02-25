@@ -10,6 +10,8 @@ public class Course {
     private int maxCapacity;
     private List<Student> roster = new ArrayList<>();
 
+
+
     public String getCourseName() {
         return courseName;
     }
