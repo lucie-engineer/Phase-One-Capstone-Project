@@ -30,7 +30,7 @@ public class Main {
             System.out.println("2. Create Course");
             System.out.println("3. Enroll Student in Course");
             System.out.println("4. View Student Record");
-            System.out.println("5. Generate Deans List");
+            System.out.println("5. Generate top Perfomer's List");
             System.out.println("6. Save and Exit");
             System.out.print("Choose an option: ");
 
@@ -39,18 +39,23 @@ public class Main {
 
             switch (choice) {
                 case 1:
+
                     System.out.println("Enter student type (U=Undergraduate, G=Graduate): ");
-                    String type = scanner.nextLine();
-                    Student student;
-                    if (type.equalsIgnoreCase("U")) {
-                        student = new UndergraduateStudent();
-                    } else {
-                        student = new GraduateStudent();
+                    String type = null;
+                    while (type == null) {
+                        String input = scanner.nextLine();
+                        if (input.equalsIgnoreCase("U") || input.equalsIgnoreCase("G")) {
+                            type = input;
+                        } else {
+                            System.out.println("Invalid type! Please enter U for Undergraduate or G for Graduate:");
+                        }
                     }
+
                     System.out.println("Enter Student ID:");
-                    student.setStudentID(scanner.nextLine());
+                    String newStudentID = scanner.nextLine();
+
                     System.out.println("Enter Name:");
-                    student.setName(scanner.nextLine());
+                    String newName = scanner.nextLine();
 
                     System.out.println("Enter GPA:");
                     Double newGPA = null;
@@ -67,11 +72,17 @@ public class Main {
                         }
                     }
                     scanner.nextLine();
-                    student.setGPA(newGPA);
 
                     System.out.println("Enter Department:");
-                    student.setDepartment(scanner.nextLine());
+                    String newDepartment = scanner.nextLine();
 
+
+                    Student student;
+                    if (type.equalsIgnoreCase("U")) {
+                        student = new UndergraduateStudent(newName, newStudentID, newStudentID, newGPA, newDepartment);
+                    } else {
+                        student = new GraduateStudent(newName, newStudentID, newStudentID, newGPA, newDepartment);
+                    }
                     manager.registerStudent(student);
                     System.out.println("Student registered successfully!");
                     break;
@@ -151,7 +162,7 @@ public class Main {
                     break;
 
                 case 5:
-                    System.out.println("===== Dean's List =====");
+                    System.out.println("---- best performers list ----");
                     for (Student s : manager.getStudents()) {
                         if (s.getGPA() > 3.5) {
                             System.out.println(s.getName() + " - GPA: " + s.getGPA());

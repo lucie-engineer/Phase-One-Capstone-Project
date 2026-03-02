@@ -9,6 +9,13 @@ public abstract class Student extends Person{
    private String department;
    private Map<Course, Double> courseGrades = new HashMap<>();
 
+    public Student(String name, String id, String studentID, Double GPA, String department) {
+        super(name, id);
+        this.studentID = studentID;
+        this.GPA = GPA;
+        this.department = department;
+    }
+
 
 
 

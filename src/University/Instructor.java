@@ -4,6 +4,11 @@ public class Instructor extends Person {
     private String lectureID;
     private String department;
 
+    public Instructor(String name, String id, String lectureID, String department) {
+        super(name, id);
+        this.lectureID = lectureID;
+        this.department = department;
+    }
 
 
 

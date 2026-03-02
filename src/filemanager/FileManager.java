@@ -50,19 +50,20 @@ public class FileManager {
             while ((line =reader.readLine()) != null){
                 String[] data = line.split(",");
 
-                Student student;
-                if (data[4].equals("G")){
-                    student = new GraduateStudent();
-                }
-                else {
-                    student = new UndergraduateStudent();
-                }
+                // ✅ Replace with this
+                String sid = data[0];
+                String sname = data[1];
+                Double gpa = Double.parseDouble(data[2]);
+                String dept = data[3];
 
-                student.setStudentID(data[0]);
-                student.setName(data[1]);
-                student.setGPA(Double.parseDouble(data[2]));
-                student.setDepartment(data[3]);
+                Student student;
+                if (data[4].equals("G")) {
+                    student = new GraduateStudent(sname, sid, sid, gpa, dept);
+                } else {
+                    student = new UndergraduateStudent(sname, sid, sid, gpa, dept);
+                }
                 students.add(student);
+
             }
             System.out.println("Students loaded successfully");
         }

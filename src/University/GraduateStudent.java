@@ -5,7 +5,9 @@ public class GraduateStudent extends Student {
     private int creditCost = 1000;
     private double researchFee = 2000.0;
 
-
+    public GraduateStudent(String name, String id, String studentID, Double GPA, String department) {
+        super(name, id, studentID, GPA, department);
+    }
 
     public int getCredits(){ return credits; }
     public int getCreditCost(){ return creditCost; }
